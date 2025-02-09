@@ -2,11 +2,16 @@
 
 import { HeroUIProvider } from '@heroui/react';
 import React from 'react';
+import { SessionProvider } from 'next-auth/react';
 
 interface ProvidersProps {
   children: React.ReactNode;
 }
 
 export default function Providers({ children }: ProvidersProps) {
-  return <HeroUIProvider>{children}</HeroUIProvider>;
+  return (
+    <SessionProvider>
+      <HeroUIProvider>{children}</HeroUIProvider>
+    </SessionProvider>
+  );
 }
