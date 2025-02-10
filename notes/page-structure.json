@@ -1,0 +1,27 @@
+[
+  {
+    "pageName": "",
+    "path": "",
+    "dataShown": ""
+  },
+  {
+    "pageName": "Home page",
+    "path": "/",
+    "dataShown": "Many posts, many topics"
+  },
+  {
+    "pageName": "Topic Show",
+    "path": "/topics/[slug]",
+    "dataShown": "A single topic and many posts"
+  },
+  {
+    "pageName": "Create a post",
+    "path": "/topics/[slug]/posts/new",
+    "dataShown": "A single topic and form for a new post"
+  },
+  {
+    "pageName": "Show a post",
+    "path": "/topics/[slug]/posts/[postId]",
+    "dataShown": "A single post and many comments"
+  }
+]
