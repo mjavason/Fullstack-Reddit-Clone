@@ -1,7 +1,7 @@
 'use client';
 
-import * as actions from '@/actions';
 import { useActionState, startTransition } from 'react';
+
 import {
   Input,
   Button,
@@ -11,9 +11,11 @@ import {
   PopoverContent,
   Form,
 } from '@heroui/react';
+import * as actions from '@/actions';
+import FormButton from '@/components/common/form-button';
 
 export default function TopicCreateForm() {
-  const [formState, action] = useActionState(actions.createTopic, {
+  const [formState, action, isPending] = useActionState(actions.createTopic, {
     errors: {},
   });
 
@@ -25,7 +27,6 @@ export default function TopicCreateForm() {
     });
   }
 
-  //   return <div>TopicCreateForm</div>;
   return (
     <Popover placement='left'>
       <PopoverTrigger>
@@ -34,7 +35,7 @@ export default function TopicCreateForm() {
       <PopoverContent>
         <Form onSubmit={handleSubmit}>
           <div className='flex flex-col gap-4 p-4 w-80'>
-            <h3 className='text-lg'>Create a topic</h3>
+            <h3 className='text-lg'>Create a Topic</h3>
             <Input
               name='name'
               label='Name'
@@ -42,23 +43,23 @@ export default function TopicCreateForm() {
               placeholder='Name'
               isInvalid={!!formState.errors.name}
               errorMessage={formState.errors.name?.join(', ')}
-            ></Input>
+            />
             <Textarea
               name='description'
               label='Description'
               labelPlacement='outside'
-              placeholder='Description'
+              placeholder='Describe your topic'
               isInvalid={!!formState.errors.description}
               errorMessage={formState.errors.description?.join(', ')}
-            ></Textarea>
+            />
 
             {formState.errors._form ? (
-                <div className="rounded p-2 bg-red-200 border border-red-400">
-                    {formState.errors._form?.join(', ')}
-                </div>
+              <div className='rounded p-2 bg-red-200 border border-red-400'>
+                {formState.errors._form?.join(', ')}
+              </div>
             ) : null}
 
-            <Button type='submit'>Submit</Button>
+            <FormButton isLoading={isPending}>Save</FormButton>
           </div>
         </Form>
       </PopoverContent>
