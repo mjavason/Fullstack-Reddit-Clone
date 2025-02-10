@@ -1,12 +1,11 @@
 'use server';
-
+import paths from '@/paths';
 import { auth } from '@/auth';
+import { db } from '@/db';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import type { Topic } from '@prisma/client';
-import { redirect } from 'next/navigation';
-import { db } from '@/db';
-import paths from '@/paths';
-import { revalidatePath } from 'next/cache';
 
 const createTopicSchema = z.object({
   name: z

@@ -1,7 +1,7 @@
 'use client';
-
-import { useActionState, startTransition } from 'react';
-
+import * as actions from '@/actions';
+import FormButton from '@/components/common/form-button';
+import { startTransition, useActionState } from 'react';
 import {
   Input,
   Button,
@@ -11,8 +11,6 @@ import {
   PopoverContent,
   Form,
 } from '@heroui/react';
-import * as actions from '@/actions';
-import FormButton from '@/components/common/form-button';
 
 export default function TopicCreateForm() {
   const [formState, action, isPending] = useActionState(actions.createTopic, {
