@@ -1,10 +1,9 @@
 "use client";
-
-import { useActionState } from "react";
-import { useEffect, useRef, useState } from "react";
-import { Textarea, Button } from "@nextui-org/react";
-import FormButton from "@/components/common/form-button";
-import * as actions from "@/actions";
+import * as actions from '@/actions';
+import FormButton from '@/components/common/form-button';
+import { Button, Textarea } from '@heroui/react';
+import { useActionState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface CommentCreateFormProps {
   postId: string;

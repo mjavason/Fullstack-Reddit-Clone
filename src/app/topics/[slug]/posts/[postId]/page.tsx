@@ -21,20 +21,12 @@ export default async function ShowPostPage({ params }: ShowPostPageProps) {
   });
   if (!post) return notFound();
 
-  // return (
-  //   <div className='grid grid-cols-4 gap-4 p-4'>
-  //     <div className='col-span-3'>
-  //       <h1 className='text-2xl font-bold mb-2'>{post.title}</h1>
-  //     </div>
-  //   </div>
-  // );
-
   return (
     <div className='space-y-3'>
       <Link className='underline decoration-solid' href={paths.topic(slug)}>
         {'< '}Back to {slug}
       </Link>
-      {/* <PostShow /> */}
+      <PostShow postId={post.id} />
       {/* <CommentCreateForm postId={postId} startOpen /> */}
       {/* <CommentList comments={comments} /> */}
     </div>
