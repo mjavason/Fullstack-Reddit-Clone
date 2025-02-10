@@ -1,4 +1,4 @@
-import { div } from 'framer-motion/client';
+import PostCreateForm from '@/components/posts/post-create-form';
 
 interface TopicShowPageProps {
   params: Promise<{
@@ -15,7 +15,9 @@ export default async function TopicShowPage({ params }: TopicShowPageProps) {
         <h1 className='text-2xl font-bold mb-2'>{slug}</h1>
       </div>
 
-      <div></div>
+      <div>
+        <PostCreateForm slug={slug}></PostCreateForm>
+      </div>
     </div>
   );
 }
