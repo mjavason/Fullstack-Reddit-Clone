@@ -1,5 +1,4 @@
 import { db } from '@/db';
-import type { Post } from '@prisma/client';
 import { notFound } from 'next/navigation';
 
 interface PostShowProps {
