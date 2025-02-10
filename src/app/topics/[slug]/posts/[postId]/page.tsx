@@ -1,18 +1,18 @@
 import { db } from '@/db';
 import { notFound } from 'next/navigation';
 
-interface TopicShowPageProps {
+interface ShowPostPageProps {
   params: Promise<{
     postId: string;
   }>;
 }
 
-export default async function PostShowPage({ params }: TopicShowPageProps) {
+export default async function PostShowPage({ params }: ShowPostPageProps) {
   const { postId } = await params;
+  
   const post = await db.post.findFirst({
     where: { id: postId },
   });
-
   if (!post) return notFound();
 
   return (
