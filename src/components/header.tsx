@@ -12,11 +12,20 @@ import { auth } from '@/auth';
 
 export default async function HeaderNav() {
   const session = await auth();
+  let authContent: React.ReactNode;
+  
+  if (session?.user) {
+    authContent = <Avatar src={session.user.image || ''} />;
+  } else {
+    authContent = <div>Sign in/Sign out</div>;
+  }
 
   return (
     <Navbar className='shadow mb-6'>
       <NavbarBrand>
-        <Link href='/' className='font-bold'>Discuss</Link>
+        <Link href='/' className='font-bold'>
+          Discuss
+        </Link>
       </NavbarBrand>
       <NavbarContent justify='center'>
         <NavbarItem>
@@ -24,12 +33,8 @@ export default async function HeaderNav() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
-        <NavbarItem>
-          {session?.user ? <div>Signed In</div> : <div>Signed out</div>}
-        </NavbarItem>
+        <NavbarItem>{authContent}</NavbarItem>
       </NavbarContent>
     </Navbar>
   );
-
-  return <div>HeaderNav</div>;
 }
