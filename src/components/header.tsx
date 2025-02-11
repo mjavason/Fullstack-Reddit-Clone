@@ -7,6 +7,8 @@ import {
   Input,
 } from '@heroui/react';
 import HeaderAuth from './header-auth';
+import SearchInput from '@/components/search-input';
+import { Suspense } from 'react';
 
 export default function HeaderNav() {
   return (
@@ -18,7 +20,9 @@ export default function HeaderNav() {
       </NavbarBrand>
       <NavbarContent justify='center'>
         <NavbarItem>
-          <Input></Input>
+          <Suspense>
+            <SearchInput></SearchInput>
+          </Suspense>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
