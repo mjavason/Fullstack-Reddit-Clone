@@ -5,7 +5,8 @@ import paths from '@/paths';
 import PostShow from '@/components/posts/post-show';
 import { db } from '@/db';
 import { notFound } from 'next/navigation';
-import { fetchCommentsByPostId } from '@/db/queries/comments';
+import { Suspense } from 'react';
+import PostShowLoading from '@/components/posts/post-show-loading';
 
 interface ShowPostPageProps {
   params: Promise<{
@@ -27,7 +28,9 @@ export default async function ShowPostPage({ params }: ShowPostPageProps) {
       <Link className='underline decoration-solid' href={paths.topic(slug)}>
         {'< '}Back to {slug}
       </Link>
-      <PostShow postId={post.id} />
+      <Suspense fallback={<PostShowLoading></PostShowLoading>}>
+        <PostShow postId={post.id} />
+      </Suspense>
       <CommentCreateForm postId={postId} startOpen />
       <CommentList postId={postId} />
     </div>
