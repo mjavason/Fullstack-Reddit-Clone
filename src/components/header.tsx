@@ -4,7 +4,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Input,
 } from '@heroui/react';
 import HeaderAuth from './header-auth';
 import SearchInput from '@/components/search-input';
